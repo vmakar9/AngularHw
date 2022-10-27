@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {urls} from "../../urls/urls";
-import {IPost} from "../../interfaces/post.interface";
+import {urls} from "../../../urls/urls";
+import {IPost} from "../../../interfaces/post.interface";
 
 @Component({
   selector: 'app-posts',
@@ -11,7 +11,7 @@ import {IPost} from "../../interfaces/post.interface";
 export class PostsComponent implements OnInit {
 
   posts:IPost[]
-
+  selectpost:IPost
   constructor(private httpClient:HttpClient) { }
 
   ngOnInit(): void {
@@ -20,6 +20,10 @@ export class PostsComponent implements OnInit {
 
   getAllPosts():void{
     this.httpClient.get<IPost[]>(urls.posts).subscribe(value => this.posts = value)
+  }
+
+  getPost( post: IPost) :void{
+    this.selectpost = post
   }
 
 }

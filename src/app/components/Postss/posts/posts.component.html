@@ -1,0 +1,6 @@
+<router-outlet></router-outlet>
+<div *ngIf="selectpost">{{selectpost.body}}</div>
+<hr/>
+<app-post *ngFor="let post of posts" [post]="post" (liftpost)="getPost($event)"></app-post>
+<hr/>
+
